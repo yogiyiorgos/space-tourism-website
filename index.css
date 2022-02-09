@@ -8,19 +8,38 @@
     --clr-white: 0 0% 100%;
 
     /* Font-sizes */
-    --fs-900: 9.375rem;
-    --fs-800: 6.25rem;
-    --fs-700: 3.5rem;
-    --fs-600: 2rem;
+    --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+    --fs-800: 3.5rem;
+    --fs-700: 1.5rem;
+    --fs-600: 1rem;
     --fs-500: 1.75rem;
-    --fs-400: 1.125rem;
+    --fs-400: 0.9375rem;
     --fs-300: 1rem;
     --fs-200: 0.875rem;
 
     /* Font families */
     --ff-serif: "Bellefair", serif;
     --ff-sans-cond: "Barlow Condensed", sans-serif;
-    --ff-sans-normal: "Barlow", snas-serif;
+    --ff-sans-normal: "Barlow", sans-serif;
+}
+
+@media (min-width: 35em) {
+    :root {
+        --fs-800: 5rem;
+        --fs-700: 2.5rem;
+        --fs-600: 1.5rem;
+        --fs-400: 1rem;
+    }
+}
+
+@media (min-width: 45em) {
+    :root {
+        /* Font-sizes */
+        --fs-800: 6.25rem;
+        --fs-700: 3.5rem;
+        --fs-600: 2rem;
+        --fs-400: 1.125rem;
+    }
 }
 
 
@@ -110,6 +129,7 @@ select {
     gap: var(--gap, 1rem);
 }
 
+
 .flow > *:where(:not(:first-child)) {
     margin-top: var(--flow-space, 1rem);
     outline: 1px sold red;
@@ -120,6 +140,10 @@ select {
     gap: var(--gap, 1rem);
 }
 
+.d-block {
+    display: block;
+}
+
 .container {
     padding-inline: 2em;
     margin-inline: auto;
@@ -127,11 +151,19 @@ select {
 }
 
 .grid-container {
+    text-align: center;
     display: grid;
+    place-items: center;
+    padding-inline: 1rem;
 }
 
-@media (min-width: 45rem) {
+.grid-container * {
+    max-width: 50ch;
+}
+
+@media (min-width: 45em) {
     .grid-container {
+        text-align: left;
         column-gap: var(--container-gap, 2rem);
         grid-template-columns: minmax(2rem, 1fr) minmax(0, 40rem) minmax(0, 40rem) minmax(2rem, 1fr);
     }
@@ -143,11 +175,13 @@ select {
     .grid-container > *:last-child {
         grid-column: 3;
     }
+
+    .grid-container--home {
+        padding-bottom: max(6rem, 20vh);
+        align-items: end;
+    }
     
 }
-
-
-
 
 .sr-only {
     position: absolute;
@@ -221,6 +255,7 @@ select {
 /* ------------------ */
 
 .large-button {
+    font-size: 2rem;
     position: relative;
     display: inline-grid;
     z-index: 1;
@@ -313,4 +348,32 @@ select {
     padding: .5em;
     aspect-ratio: 1;
     place-items: center;
+}
+
+/* ------------------------- */
+/* Page specific background  */
+/* ------------------------- */
+
+body {
+    background-size: cover;
+    background-position: bottom center;
+}
+
+/* Home */
+
+.home {
+    background-image: url(./assets/home/background-home-mobile.jpg);
+}
+
+@media (min-width: 35rem) {
+    .home {
+        background-position: center center;
+        background-image: url(./assets/home/background-home-tablet.jpg);
+    }
+}
+
+@media (min-width: 45rem) {
+    .home {
+        background-image: url(./assets/home/background-home-desktop.jpg);
+    }
 }
