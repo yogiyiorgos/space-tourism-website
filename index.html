@@ -12,6 +12,8 @@
     <!--  Our custom CSS  -->
     <link rel="stylesheet" href="index.css">
   <title>Frontend Mentor | Space tourism website</title>
+
+  <script src="index.js" defer></script>
 </head>
 <body class="home">
 
@@ -19,8 +21,9 @@
         <div>
             <img src="./assets/shared/logo.svg" alt="space tourism logo" class="logo">
         </div>
+        <button class="mobile-nav-toggle" aria-controls="primary-navigation"><span class="sr-only" aria-expanded="false">Menu</span></button>
         <nav>
-            <ul class="primary-navigation underline-indicators flex" style="--gap: 4rem;">
+            <ul id="primary-navigation" data-visible="false" class="primary-navigation underline-indicators flex" style="--gap: 4rem;">
                 <li class="active"><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="index.html"><span>00</span>Home</a>
                 <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="destination.html"><span>01</span>Destination</a>
                 <li><a class="ff-sans-cond uppercase text-white letter-spacing-2" href="crew.html"><span>02</span>Crew</a>
